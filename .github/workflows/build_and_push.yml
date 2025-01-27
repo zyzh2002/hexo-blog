@@ -45,4 +45,3 @@ jobs:
             local_path: public
             remote_path: .
             clean: true
-            accelerate: true
