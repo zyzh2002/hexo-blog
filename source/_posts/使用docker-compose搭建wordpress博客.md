@@ -1,6 +1,7 @@
 ---
 title: 使用docker compose搭建wordpress博客
 date: 2024-02-27 16:41:04
+categories: 瞎折腾记录
 tags:
 ---
 
@@ -11,6 +12,8 @@ tags:
 ### 架构设计
 
 考虑到这台HECS使用了新用户优惠，续费的时候不一定有这种价格，可以考虑使用docker compose构建架构以实现方便迁移。整个架构有三个容器，wordpress，mysql和nginx，其中wordpress使用php-fpm的版本。
+
+<!-- more -->
 
 ## 前期准备
 

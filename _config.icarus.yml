@@ -3,11 +3,12 @@ version: 5.1.0
 # Icarus theme variant, can be "default" or "cyberpunk"
 variant: default
 # Path or URL to the website's logo
-logo: /img/logo.svg
+logo:
+    text: zyzh0's Blog
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: /img/favicon.svg
+    favicon: images/paw-solid.svg
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -109,12 +110,11 @@ navbar:
         文章: /archives
         分类: /categories
         标签: /tags
-        关于: /about
     # Links to be shown on the right of the navigation bar
     links:
-        Download on GitHub:
+        Source Code on GitHub:
             icon: fab fa-github
-            url: https://github.com/ppoffice/hexo-theme-icarus
+            url: https://github.com/zyzh2002/hexo-blog
 # Page footer configurations
 footer:
     # Copyright text
@@ -127,9 +127,9 @@ footer:
         Attribution 4.0 International:
             icon: fab fa-creative-commons-by
             url: https://creativecommons.org/licenses/by/4.0/
-        Download on GitHub:
+        Source Code on GitHub:
             icon: fab fa-github
-            url: https://github.com/ppoffice/hexo-theme-icarus
+            url: https://github.com/zyzh2002/hexo-blog
 # Article related configurations
 article:
     # Code highlight settings
@@ -177,7 +177,7 @@ sidebar:
     # Right sidebar configurations
     right:
         # Whether the sidebar sticks to the top when page scrolls
-        sticky: false
+        sticky: true
 # Sidebar widget configurations
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
 widgets:
@@ -205,13 +205,16 @@ widgets:
             Github:
                 icon: fab fa-github
                 url: https://github.com/zyzh2002
-            RSS:
-                icon: fas fa-rss
-                url: /
+            BiliBili:
+                icon: fa-brands fa-bilibili
+                url: https://space.bilibili.com/13909164
+            Email:
+                icon: fa-solid fa-envelope
+                url: mailto:18255331+zyzh2002@users.noreply.github.com
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: toc
         # Whether to show the index of each heading
         index: true
@@ -226,8 +229,8 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
+            西北农林科技大学HSD协会: https://hsd.acrs.top
             Hexo: https://hexo.io
-            Bulma: https://bulma.io
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar

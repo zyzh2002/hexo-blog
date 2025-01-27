@@ -1,13 +1,17 @@
 ---
 title: SPEI计算的原理与算法优化
 date: 2024-04-15 20:29:44
+categories: 实用技术
 tags:
+toc: true
 ---
 
 ## 什么是SPEI
 
 标准化降水蒸散指数SPEI（Standardized Precipitation Evapotranspiration Index）可以表征干湿状态。
 SPEI值越大越湿润，越小越干旱，其最早由Sergio M. Vicente-Serrano等人[提出](http://www.ipe.csic.es/vicente-serrano-s.m.)。
+
+<!-- more -->
 
 ## SPEI算法
 
@@ -165,7 +169,7 @@ print(timeit.timeit(lambda: sum_circulate(a, b), number=100))
 
 `numpy`版本的向量加法比循环版本快了170多倍。如果我们以数组规模和所用时间作图，我们得到以下结果：
 
-![time_comp](https://img2.imgtp.com/2024/05/22/6o5y0uQB.webp)
+![时间比较](graph1.png)
 
 问题规模越大，SIMD带来的加速效果越明显。但是`scipy`中的参数估计方法无法实现循环向量化，一次只能处理一个时间序列；而且修改`scipy`中的代码的成本又太高（大部分代码均由C语言写成），所以需要找新的参数估计模式。
 
@@ -350,4 +354,4 @@ def test(x):
 
 ## 后记
 
-文中的完整代码以放于Github仓库[pylm-spei](https://github.com/zyzh2002/pylm-spei)。要在正态化的步骤执行加速，可以参考[numba-stats](https://pypi.org/project/numba-stats/)。
+文中的完整代码已放于Github仓库[pylm-spei](https://github.com/zyzh2002/pylm-spei)。要在正态化的步骤执行加速，可以参考[numba-stats](https://pypi.org/project/numba-stats/)。
