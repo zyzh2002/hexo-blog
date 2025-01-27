@@ -1,3 +1,7 @@
+# release folder
+
+public/
+
 # Logs
 logs
 *.log
