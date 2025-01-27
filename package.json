@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "hexo": "^7.3.0",
+    "hexo-theme-icarus": "^6.1.1"
+  }
+}
