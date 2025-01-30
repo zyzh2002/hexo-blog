@@ -15,6 +15,10 @@ SPEI值越大越湿润，越小越干旱，其最早由Sergio M. Vicente-Serrano
 
 ## SPEI算法
 
+{% raw %}<article class="message is-danger"><div class="message-body">{% endraw %}
+**注意**：这里的SPEI计算方法存在一些缺陷。目前已经基于其他包并行化之后的算法对齐进行修改，请等待博客后续更新。
+{% raw %}</div></article>{% endraw %}
+
 ### 构建差值序列
 
 首先构建降水量$P_i$和潜在蒸散发$PET_i$的差值序列$D_i$，
