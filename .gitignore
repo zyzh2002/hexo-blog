@@ -1,6 +1,11 @@
-# release folder
-
+# Hexo related
+db.json
+*.log
 public/
+.deploy*/
+_multiconfig.yml
+.DS_Store
+Thumbs.db
 
 # Logs
 logs
