@@ -1,4 +1,4 @@
-name: zyzh0's Blog CI/CD # 脚本 workflow 名称
+name: zyzh0's Blog CI/CD
 
 on:
   push:
