@@ -1,5 +1,7 @@
 # 博客说明文档
 
+![build_and_push](https://github.com/zyzh2002/hexo-blog/actions/workflows/build_and_push.yml/badge.svg)
+
 这是个人博客<https://blog.zyzh20021020.cn>的说明文档。
 
 ## 构建环境与所用框架
