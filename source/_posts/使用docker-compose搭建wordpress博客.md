@@ -2,7 +2,10 @@
 title: 使用docker compose搭建wordpress博客
 date: 2024-02-27 16:41:04
 categories: 瞎折腾记录
-tags: wordpress docker
+tags:
+  - wordpress
+  - docker
+  - 博客
 ---
 
 ## 引言

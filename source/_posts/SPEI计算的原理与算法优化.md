@@ -2,7 +2,9 @@
 title: SPEI计算的原理与算法优化
 date: 2024-04-15 20:29:44
 categories: 实用技术
-tags: SPEI 并行计算
+tags:
+    - SPEI
+    - 并行计算
 toc: true
 ---
 

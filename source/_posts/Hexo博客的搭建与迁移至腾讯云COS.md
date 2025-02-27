@@ -4,7 +4,10 @@ date: 2025-01-30 16:41:04
 categories: 瞎折腾记录
 cover: https://ppoffice.github.io/hexo-theme-icarus/gallery/preview.png
 toc: true
-tags: 博客 CI/CD node.js
+tags:
+  - 博客
+  - CI/CD
+  - node.js
 ---
 
 ## Intro
