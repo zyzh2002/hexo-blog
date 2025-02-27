@@ -136,7 +136,7 @@ article:
     highlight:
         # Code highlight themes
         # https://github.com/highlightjs/highlight.js/tree/master/src/styles
-        theme: vs
+        theme: github
         # Show copy code button
         clipboard: true
         # Default folding status of the code blocks. Can be "", "folded", "unfolded"
@@ -193,7 +193,7 @@ widgets:
         # Author's current location
         location: NWAFU
         # URL or path to the avatar image
-        avatar: https://avatars.githubusercontent.com/zyzh2002
+        avatar: images/avatar.gif
         # Whether show the rounded avatar image
         avatar_rounded: true
         # Email address for the Gravatar
@@ -365,8 +365,8 @@ plugins:
 # https://ppoffice.github.io/hexo-theme-icarus/Configuration/Theme/speed-up-your-site-with-custom-cdn/
 providers:
     # Name or URL template of the JavaScript and/or stylesheet CDN provider
-    cdn: jsdelivr
+    cdn: unpkg
     # Name or URL template of the webfont CDN provider
-    fontcdn: fontim
+    fontcdn: google
     # Name or URL of the fontawesome icon font CDN provider
     iconcdn: fontawesome
