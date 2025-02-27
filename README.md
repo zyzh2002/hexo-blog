@@ -33,4 +33,18 @@
 
 ## 构建方式
 
-已经使用Github Actions对博客构建进行了自动化部署。`public`文件夹下的内容会自动上传至腾讯云COS。
+确保你安装了`node`并配置好了`npm`，如果没有的话请参考[官方教程](https://nodejs.org/zh-cn/download)安装`fnm`和`npm`。如果你在中国大陆还要确保对`npm`进行换源。
+
+```sh
+npm config set registry https://registry.npmmirror.com #淘宝源
+```
+
+之后恢复项目环境
+
+```sh
+npm install
+```
+
+在此之后就可以运行`npx hexo-cli`相关命令了。
+
+已经使用Github Actions对博客构建进行了自动化部署。将修改好的项目push到远程仓库，`public`文件夹下的内容会自动上传至腾讯云COS。
