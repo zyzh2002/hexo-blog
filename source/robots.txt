@@ -4,6 +4,9 @@ Allow: /archives/
 Allow: /categories/
 Allow: /tags/
 Allow: /resources/
+Allow: /sitemap.xml
+Allow: /sitemap.txt
+Allow: /baidusitemap.xml
 Disallow: /vendors/
 Disallow: /fonts/
 Disallow: /vendors/
