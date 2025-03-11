@@ -1,12 +1,13 @@
 # 博客说明文档
 
 ![build_and_push](https://github.com/zyzh2002/hexo-blog/actions/workflows/build_and_push.yml/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dd099dfc-3fb5-41af-931e-ab2d417e8699/deploy-status)](https://app.netlify.com/sites/zyzh0-pesonal-blog/deploys)
 
 这是个人博客<https://blog.zyzh20021020.cn>的说明文档。
 
 ## 构建环境与所用框架
 
-项目使用`Node`版本为`v22.13.1`。无特殊需求请默认使用高于该版本的`Node`，并参考框架所需要求。
+项目使用`Node`版本为`v22.x`。无特殊需求请默认使用高于该版本的`Node`，并参考框架所需要求。
 
 博客基于[hexo](https://hexo.io/)与其[icarus](https://github.com/ppoffice/hexo-theme-icarus)主题构建。修改相关配置文件之前建议完整阅读前文所提项目文档。
 
