@@ -13,4 +13,5 @@ Disallow: /vendors/
 Disallow: /fancybox/
 
 Sitemap: https://blog.zyzh20021020.cn/sitemap.xml
+Sitemap: https://blog.zyzh20021020.cn/sitemap.txt
 Sitemap: https://blog.zyzh20021020.cn/baidusitemap.xml
