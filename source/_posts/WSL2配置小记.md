@@ -1,8 +1,9 @@
 ---
 title: WSL2配置小记
-date: 2023-12-27 1:20:23
 categories: 瞎折腾记录
 toc: true
+abbrlink: 31b7e97e
+date: 2023-12-27 01:20:23
 tags:
 ---
 

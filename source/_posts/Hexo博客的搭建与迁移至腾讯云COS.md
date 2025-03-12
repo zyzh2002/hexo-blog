@@ -1,6 +1,5 @@
 ---
 title: Hexo博客的搭建与迁移至腾讯云COS
-date: 2025-01-30 16:41:04
 categories: 瞎折腾记录
 cover: images/cover-Hexo博客的搭建与迁移至腾讯云COS.png
 toc: true
@@ -8,6 +7,8 @@ tags:
   - 博客
   - CI/CD
   - node.js
+abbrlink: 1f75771c
+date: 2025-01-30 16:41:04
 ---
 
 ## Intro
