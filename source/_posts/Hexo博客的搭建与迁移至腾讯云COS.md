@@ -32,7 +32,7 @@ date: 2025-01-30 16:41:04
 
 可以使用`npm`安装Hexo。
 
-```sh
+```shell
 npm install -g hexo-cli
 ```
 
@@ -42,7 +42,7 @@ npm install -g hexo-cli
 
 安装完成后便可以使用Hexo的命令行。执行以下命令来在指定文件夹中初始化你的Hexo项目：
 
-```sh
+```shell
 $ hexo init <YOUR_REPO_FOLDER>
 ...
 INFO  Cloning hexo-starter https://github.com/hexojs/hexo-starter.git
@@ -90,7 +90,7 @@ zlib: 1.3.0.1-motley-82a5fec
 
 请先检查`.gitignore`文件并添加你需要的忽略项。一般情况下项目自动生成的文件已经能满足要求。
 
-```text
+```shell
 .DS_Store
 Thumbs.db
 db.json
@@ -191,7 +191,7 @@ jobs:
 
 ### 设置静态网站
 
-在腾讯云的[对象存储控制面板](https://console.cloud.tencent.com/cos/bucket)中添加你的存储桶之后，根据[官方教程](https://cloud.tencent.com/document/product/436/32670?from=copy)将存储桶设置为静态网站，在调试完成之后建议打开“强制HTTPS”选项。如果你有自己的域名，可以[添加自己的域名至存储桶访问](https://cloud.tencent.com/document/product/436/36638?from=copy)。因为在配置存储桶设置是打开了强制HTTPS，所以你还需申请上传你自己的TLS证书。
+在腾讯云的[对象存储控制面板](https://shell.cloud.tencent.com/cos/bucket)中添加你的存储桶之后，根据[官方教程](https://cloud.tencent.com/document/product/436/32670?from=copy)将存储桶设置为静态网站，在调试完成之后建议打开“强制HTTPS”选项。如果你有自己的域名，可以[添加自己的域名至存储桶访问](https://cloud.tencent.com/document/product/436/36638?from=copy)。因为在配置存储桶设置是打开了强制HTTPS，所以你还需申请上传你自己的TLS证书。
 
 ![打开强制HTTPS](https.png)
 

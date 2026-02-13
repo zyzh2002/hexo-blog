@@ -32,7 +32,7 @@ notepad.exe .wslconfig
 
 在记事本窗口中对该文件进行修改。以下是一个示例的`.wslconfig`文件：
 
-```conf
+```ini
 # Settings apply across all Linux distros running on WSL 2
 [wsl2]
 
@@ -64,7 +64,7 @@ localhostforwarding=true
 nestedVirtualization=false
 
 # 是否显示 dmesg 内容的输出控制台窗口
-debugConsole=true
+debugshell=true
 
 # 网络模式，如果值为 mirrored，则会启用镜像网络模式。默认为 NAT 模式，个人推荐使用镜像模式来方便开发，仅在Win11中可用
 networkingMode=mirrored

@@ -27,7 +27,7 @@ HECS服务器系统使用CentOS Stream 9。
 
 #### 设置仓库
 
-```bash
+```shell
 $ sudo dnf install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
@@ -35,7 +35,7 @@ $ sudo dnf install -y yum-utils \
 
 选用阿里云的镜像源：
 
-```bash
+```shell
 sudo yum-config-manager \
     --add-repo \
     https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
@@ -43,7 +43,7 @@ sudo yum-config-manager \
 
 如果你的服务器位于境外，使用官方镜像源也许更快：
 
-```bash
+```shell
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
@@ -51,19 +51,19 @@ sudo yum-config-manager \
 
 #### 安装 Docker Engine-Community
 
-```bash
+```shell
 sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 #### 启用docker服务
 
-```bash
+```shell
 sudo systemctl enable docker --now
 ```
 
 #### 测试
 
-```bash
+```shell
 
 [root@hecs-166145 wordpress]# docker -v
 Docker version 25.0.3, build 4debf41
@@ -156,7 +156,7 @@ networks:
 
 推荐使用Mozilla SSL Configuration Generator来生成适合你的SSL配置。本文中的配置文件在其生成的配置文件基础上修改而来。
 
-```nginx_conf
+```nginxconf
 # generated 2024-02-26, Mozilla Guideline v5.7, nginx 1.17.7, OpenSSL 1.1.1k, intermediate configuration
 # https://ssl-config.mozilla.org/#server=nginx&version=1.17.7&config=intermediate&openssl=1.1.1k&guideline=5.7
 server {
@@ -225,13 +225,13 @@ acme.sh 实现了 acme 协议， 可以从 letsencrypt 生成免费的证书。
 
 使用官方的安装脚本安装acme.sh:
 
-```bash
+```shell
 curl https://get.acme.sh | sh -s email=my@example.com
 ```
 
 如果你的服务器在中国境内，可以使用gitee上的仓库安装acme.sh:
 
-```bash
+```shell
 git clone https://gitee.com/neilpang/acme.sh.git
 cd acme.sh
 ./acme.sh --install -m my@example.com
@@ -246,7 +246,7 @@ cd acme.sh
 
 要启动配置好的docker compose，运行以下命令：
 
-```bash
+```shell
 docker compose up
 ```
 
@@ -254,7 +254,7 @@ docker compose up
 
 如果要让服务以后台运行，可以添加参数：
 
-```bash
+```shell
 docker compose up -d
 ```
 

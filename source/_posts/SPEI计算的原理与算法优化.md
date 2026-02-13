@@ -105,40 +105,100 @@ int main() {
 
 该程序将两个`int`类型的变量使用循环相加。在AMD64机器上使用gcc的`-O1`和`-O3`优化选项分别编译得到汇编文件（也可以去网站[Compiler Explorer](https://godbolt.org/)）：
 
-```Shell Session
+```shell
 gcc simd.c -S -o simd_O1.S -masm=intel -march=core-avx2 -O1 -v
 
 gcc simd.c -S -o simd_O3.S -masm=intel -march=core-avx2 -O3 -v
 ```
 
-我们只关注`scanf`调用和`printf`调用之间的部分，汇编文件分别为：
+汇编文件分别为：
 
 ```x86asm
 # simd_O1.S
-mov     ecx, DWORD PTR [rsp+16]
-add     ecx, DWORD PTR [rsp+28]
-mov     edx, DWORD PTR [rsp+12]
-add     edx, DWORD PTR [rsp+24]
-mov     esi, DWORD PTR [rsp+8]
-add     esi, DWORD PTR [rsp+20]
-mov     edi, OFFSET FLAT:.LC3
-mov     eax, 0
-call    "printf"
+.LC0:
+        .string "Input the First Vec:"
+.LC1:
+        .string "%d%d%d"
+.LC2:
+        .string "Input the Secound Vec:"
+.LC3:
+        .string "Sum Vector is %d %d %d\n"
+main:
+        sub     rsp, 40
+        mov     edi, OFFSET FLAT:.LC0
+        call    puts
+        lea     rsi, [rsp+20]
+        lea     rcx, [rsp+28]
+        lea     rdx, [rsp+24]
+        mov     edi, OFFSET FLAT:.LC1
+        mov     eax, 0
+        call    __isoc99_scanf
+        mov     edi, OFFSET FLAT:.LC2
+        call    puts
+        lea     rsi, [rsp+8]
+        lea     rcx, [rsp+16]
+        lea     rdx, [rsp+12]
+        mov     edi, OFFSET FLAT:.LC1
+        mov     eax, 0
+        call    __isoc99_scanf
+        mov     ecx, DWORD PTR [rsp+16]
+        add     ecx, DWORD PTR [rsp+28]
+        mov     edx, DWORD PTR [rsp+12]
+        add     edx, DWORD PTR [rsp+24]
+        mov     esi, DWORD PTR [rsp+8]
+        add     esi, DWORD PTR [rsp+20]
+        mov     edi, OFFSET FLAT:.LC3
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        add     rsp, 40
+        ret
 ```
 
 ```x86asm
 # simd_O3.S
-call    __isoc99_scanf
-vmovq   xmm0, QWORD PTR [rsp]
-mov     ecx, DWORD PTR [rsp+40]
-xor     eax, eax
-vmovq   xmm1, QWORD PTR [rsp+32]
-add     ecx, DWORD PTR [rsp+8]
-mov     edi, OFFSET FLAT:.LC3
-vpaddd  xmm0, xmm0, xmm1
-vpextrd edx, xmm0, 1
-vmovd   esi, xmm0
-call    "printf"
+.LC0:
+        .string "Input the First Vec:"
+.LC1:
+        .string "%d%d%d"
+.LC2:
+        .string "Input the Secound Vec:"
+.LC3:
+        .string "Sum Vector is %d %d %d\n"
+main:
+        push    rbp
+        mov     edi, OFFSET FLAT:.LC0
+        mov     rbp, rsp
+        and     rsp, -32
+        sub     rsp, 64
+        call    puts
+        mov     rsi, rsp
+        lea     rcx, [rsp+8]
+        xor     eax, eax
+        lea     rdx, [rsp+4]
+        mov     edi, OFFSET FLAT:.LC1
+        call    __isoc99_scanf
+        mov     edi, OFFSET FLAT:.LC2
+        call    puts
+        lea     rsi, [rsp+32]
+        lea     rcx, [rsp+40]
+        xor     eax, eax
+        lea     rdx, [rsp+36]
+        mov     edi, OFFSET FLAT:.LC1
+        call    __isoc99_scanf
+        vmovq   xmm0, QWORD PTR [rsp]
+        mov     ecx, DWORD PTR [rsp+40]
+        xor     eax, eax
+        vmovq   xmm1, QWORD PTR [rsp+32]
+        add     ecx, DWORD PTR [rsp+8]
+        mov     edi, OFFSET FLAT:.LC3
+        vpaddd  xmm0, xmm0, xmm1
+        vpextrd edx, xmm0, 1
+        vmovd   esi, xmm0
+        call    printf
+        xor     eax, eax
+        leave
+        ret
 ```
 
 在没有使用优化的情况下，程序使用了3条`addl`指令，而优化过后其使用了`xmm`寄存器（SSE指令集）提升了计算效率。但Python解释器没有内建的SIMD支持，要解决这种问题可以使用`numpy`包：
@@ -168,7 +228,7 @@ print(timeit.timeit(lambda: sum_circulate(a, b), number=100))
 
 输出结果不难预测，
 
-```Shell Session
+```shell
 0.004135900000619586
 0.6949793999992835
 ```

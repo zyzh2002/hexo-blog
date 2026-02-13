@@ -28,7 +28,7 @@ date: 2026-02-13 17:16:03
 
 要交叉编译肯定需要Zerotier的代码，先将其克隆到本地仓库：
 
-```console
+```shell
 git clone https://github.com/zerotier/ZeroTierOne.git -b 1.16.1 # 只需要1.16.1分支下的内容
 ```
 
@@ -36,13 +36,13 @@ git clone https://github.com/zerotier/ZeroTierOne.git -b 1.16.1 # 只需要1.16.
 
 还需要编译所用的工具和交叉编译工具链。一般编译所用工具直接安装`build-essential`和`cmake`就行，
 
-```console
+```shell
 sudo apt install build-essential cmake --install-suggests
 ```
 
 交叉编译工具链可以直接使用系统提供的版本，写一个正则在`apt`里搜一下：
 
-```console
+```shell
 $ apt search ^[a-z+]+-[0-9]+-aarch64-linux-gnu$
 Sorting... Done
 Full Text Search... Done
@@ -157,7 +157,7 @@ gobjc-9-aarch64-linux-gnu/jammy-updates,jammy-security 9.5.0-1ubuntu1~22.04cross
 
 这也不是很老的软件，显然安装`gcc-12-aarch64-linux-gnu`和`g++-12-aarch64-linux-gnu`两个包就行。
 
-```console
+```shell
 sudo apt install gcc-12-aarch64-linux-gnu g++-12-aarch64-linux-gnu
 ```
 
@@ -341,7 +341,7 @@ install:  FORCE
 
 `install`明显就是复制一下文件，因为需要把编译成果拷贝走，编译的时候记得指定`DESTDIR`安装目录，这里就选`./install`。
 
-```console
+```shell
 mkdir -p ./install
 ```
 
@@ -359,7 +359,7 @@ mkdir -p ./install
 
 直接带参数用全部线程`make`：
 
-```console
+```shell
 make -j$(nproc) CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ ZT_SSO_SUPPORTED=0
 ```
 
@@ -373,7 +373,7 @@ make install DESTDIR=$(pwd)/install
 
 看一下`./install`里的文件：
 
-```console
+```shell
 $ tree
 .
 ├── usr
@@ -401,7 +401,7 @@ $ tree
 
 可以再看一下编译出来的ELF文件头：
 
-```console
+```shell
 $ readelf -h ./install/usr/sbin/zerotier-one
 ELF Header:
   Magic:   7f 45 4c 46 02 01 01 03 00 00 00 00 00 00 00 00
