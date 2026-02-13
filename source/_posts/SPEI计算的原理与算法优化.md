@@ -105,41 +105,38 @@ int main(){
 
 该程序将两个`int`类型的变量使用循环相加。在AMD64机器上使用gcc的`-O1`和`-O3`优化选项分别编译得到汇编文件：
 
-```console
-gcc simd.c -S -o simd_O1.S -O1 -v
+```Shell Session
+gcc simd.c -S -o simd_O1.S -masm=intel -march=core-avx2 -O1 -v
 
-gcc simd.c -S -o simd_O3.S -O3 -v
+gcc simd.c -S -o simd_O3.S -masm=intel -march=core-avx2 -O3 -v
 ```
 
 我们只关注`scanf`调用和`printf`调用之间的部分，汇编文件分别为：
 
-```nasm
+```x86asm
 # simd_O1.S
-call    __isoc99_scanf
-movl    16(%rsp), %ecx
-addl    28(%rsp), %ecx
-movl    12(%rsp), %edx
-addl    24(%rsp), %edx
-movl    8(%rsp), %esi
-addl    20(%rsp), %esi
-movl    $.LC3, %edi
-movl    $0, %eax
-call    printf
+mov     ecx, DWORD PTR [rsp+16]
+add     ecx, DWORD PTR [rsp+28]
+mov     edx, DWORD PTR [rsp+12]
+add     edx, DWORD PTR [rsp+24]
+mov     esi, DWORD PTR [rsp+8]
+add     esi, DWORD PTR [rsp+20]
+mov     edi, OFFSET FLAT:.LC3
+mov     eax, 0
 ```
 
-```nasm
+```x86asm
 # simd_O3.S
 call    __isoc99_scanf
-movl    24(%rsp), %ecx
-movl    $.LC3, %edi
-xorl    %eax, %eax
-movq    (%rsp), %xmm0
-movq    16(%rsp), %xmm1
-addl    8(%rsp), %ecx
-paddd   %xmm1, %xmm0
-pextrd  $1, %xmm0, %edx
-movd    %xmm0, %esi
-call    printf
+vmovq   xmm0, QWORD PTR [rsp]
+mov     ecx, DWORD PTR [rsp+40]
+xor     eax, eax
+vmovq   xmm1, QWORD PTR [rsp+32]
+add     ecx, DWORD PTR [rsp+8]
+mov     edi, OFFSET FLAT:.LC3
+vpaddd  xmm0, xmm0, xmm1
+vpextrd edx, xmm0, 1
+vmovd   esi, xmm0
 ```
 
 在没有使用优化的情况下，程序使用了3条`addl`指令，而优化过后其使用了`xmm`寄存器（SSE指令集）提升了计算效率。但Python解释器没有内建的SIMD支持，要解决这种问题可以使用`numpy`包：
@@ -169,7 +166,7 @@ print(timeit.timeit(lambda: sum_circulate(a, b), number=100))
 
 输出结果不难预测，
 
-```console
+```Shell Session
 0.004135900000619586
 0.6949793999992835
 ```
