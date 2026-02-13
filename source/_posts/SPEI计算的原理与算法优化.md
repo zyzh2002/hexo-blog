@@ -83,27 +83,27 @@ Test the simd optimization support for gcc
 #include <stdio.h>
 #define LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
-int main(){
-    int vec1 [3];
-    int vec2 [3];
+int main() {
+    int vec1[3];
+    int vec2[3];
     printf("Input the First Vec:\n");
-    scanf("%d%d%d",&vec1[0],&vec1[1],&vec1[2]);
+    scanf("%d%d%d", &vec1[0], &vec1[1], &vec1[2]);
     printf("Input the Secound Vec:\n");
-    scanf("%d%d%d",&vec2[0],&vec2[1],&vec2[2]);
+    scanf("%d%d%d", &vec2[0], &vec2[1], &vec2[2]);
 
     int vec3[3];
 
-    for(int i = 0;i<LENGTH(vec1);i++){
-        vec3[i] = vec1[i]+vec2[i];
+    for (int i = 0; i < LENGTH(vec1); i++) {
+        vec3[i] = vec1[i] + vec2[i];
     }
 
-    printf("Sum Vector is %d %d %d\n",vec3[0],vec3[1],vec3[2]);
+    printf("Sum Vector is %d %d %d\n", vec3[0], vec3[1], vec3[2]);
 
     return 0;
 }
 ```
 
-该程序将两个`int`类型的变量使用循环相加。在AMD64机器上使用gcc的`-O1`和`-O3`优化选项分别编译得到汇编文件：
+该程序将两个`int`类型的变量使用循环相加。在AMD64机器上使用gcc的`-O1`和`-O3`优化选项分别编译得到汇编文件（也可以去网站[Compiler Explorer](https://godbolt.org/)）：
 
 ```Shell Session
 gcc simd.c -S -o simd_O1.S -masm=intel -march=core-avx2 -O1 -v
