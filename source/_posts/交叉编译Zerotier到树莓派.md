@@ -1,5 +1,7 @@
 ---
 title: 交叉编译Zerotier到树莓派
+categories: 瞎折腾记录
+toc: true
 tags:
   - 嵌入式
 abbrlink: e9442809
