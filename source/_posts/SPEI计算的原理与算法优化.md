@@ -123,6 +123,7 @@ mov     esi, DWORD PTR [rsp+8]
 add     esi, DWORD PTR [rsp+20]
 mov     edi, OFFSET FLAT:.LC3
 mov     eax, 0
+call    "printf"
 ```
 
 ```x86asm
@@ -137,6 +138,7 @@ mov     edi, OFFSET FLAT:.LC3
 vpaddd  xmm0, xmm0, xmm1
 vpextrd edx, xmm0, 1
 vmovd   esi, xmm0
+call    "printf"
 ```
 
 在没有使用优化的情况下，程序使用了3条`addl`指令，而优化过后其使用了`xmm`寄存器（SSE指令集）提升了计算效率。但Python解释器没有内建的SIMD支持，要解决这种问题可以使用`numpy`包：
