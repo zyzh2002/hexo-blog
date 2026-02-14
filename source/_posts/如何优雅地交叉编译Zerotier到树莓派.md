@@ -1,5 +1,5 @@
 ---
-title: 交叉编译Zerotier到树莓派
+title: 如何优雅地交叉编译Zerotier到树莓派
 categories: 瞎折腾记录
 toc: true
 tags:
