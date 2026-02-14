@@ -3,12 +3,12 @@ version: 5.1.0
 # Icarus theme variant, can be "default" or "cyberpunk"
 variant: default
 # Path or URL to the website's logo
-logo:
-    text: zyzh0's Blog
+logo: images/favicon.svg
+    # text: images/favicon.svg
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: images/paw-solid.svg
+    favicon: images/favicon.svg
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -165,10 +165,10 @@ search:
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
-    -
-        type: buymeacoffee
-        # URL to the "Buy me a coffee" page
-        url: 'https://www.buymeacoffee.com/zyzh202'
+    # -
+    #     type: buymeacoffee
+    #     # URL to the "Buy me a coffee" page
+    #     url: 'https://www.buymeacoffee.com/zyzh202'
 sidebar:
     # Left sidebar configurations
     left:
