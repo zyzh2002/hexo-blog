@@ -7,6 +7,7 @@ on:
       - '*.json'
       - '**.yml'
       - '**/source/**'
+      - 'themes/**'
 
 jobs:
   blog:
@@ -29,6 +30,7 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           npm install
+          cd themes/icarus && npm install
           echo "init node successful"
       - name: Build Blog
         run: |
