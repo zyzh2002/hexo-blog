@@ -29,11 +29,14 @@ jobs:
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            themes/icarus/package-lock.json
 
       - name: Install Node.js dependencies
         run: |
-          npm install
-          cd themes/icarus && npm install
+          npm ci
+          cd themes/icarus && npm ci
 
       - name: Build
         run: npx hexo clean && npx hexo g
