@@ -1,0 +1,8 @@
+[build]
+  base    = "."
+  publish = "public"
+  command = "npm install && npm install --prefix themes/icarus && npx hexo clean && npx hexo g"
+
+[build.environment]
+  NODE_VERSION = "24"
+  NPM_FLAGS    = "--no-audit --no-fund"
