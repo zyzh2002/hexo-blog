@@ -6,7 +6,6 @@ Allow: /tags/
 Allow: /resources/
 Allow: /sitemap.xml
 Allow: /sitemap.txt
-Allow: /baidusitemap.xml
 Disallow: /vendors/
 Disallow: /fonts/
 Disallow: /vendors/
@@ -14,4 +13,3 @@ Disallow: /fancybox/
 
 Sitemap: https://blog.zyzh20021020.cn/sitemap.xml
 Sitemap: https://blog.zyzh20021020.cn/sitemap.txt
-Sitemap: https://blog.zyzh20021020.cn/baidusitemap.xml

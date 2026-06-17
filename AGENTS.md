@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-Hexo 8.1.1 静态博客，使用 icarus 主题，部署至腾讯云 COS。无测试、lint 或 typecheck 命令。
+Hexo 8.1.1 静态博客，使用 icarus 主题，部署至 Cloudflare Pages。无测试、lint 或 typecheck 命令。
 
 ## 关键命令
 
@@ -42,11 +42,11 @@ npm run server       # 本地预览，默认 http://localhost:4000
 
 ## CI/CD
 
-GitHub Actions 在 push 到 main/master 且涉及 `*.json`、`**.yml`、`**/source/**` 路径时触发，执行 `hexo clean && hexo g` 后将 `public/` 部署至腾讯云 COS。修改非源码文件（如 README）不会触发构建。
+GitHub Actions 在 push 到 main 且涉及 `*.json`、`**.yml`、`**/source/**`、`themes/**`、`.node-version`、`package*.json` 路径时触发，执行 `hexo clean && hexo g` 后将 `public/` 部署至 Cloudflare Pages。修改非源码文件（如 README）不会触发构建。
 
 ## 注意事项
 
-- Node 版本要求 v22.x（`.node-version` 指定 v22.14.0）
+- Node 版本要求 v24（`.node-version` 指定 24）
 - `public/` 目录在 `.gitignore` 中，不要提交构建产物
 - `hexo-neat` 插件会在构建时压缩 HTML/CSS/JS，排除了 `.min.*` 和 live2d 相关文件
 - `skip_render` 排除了百度验证文件 `baidu_verify_codeva-7MvbRcSn38.html`
